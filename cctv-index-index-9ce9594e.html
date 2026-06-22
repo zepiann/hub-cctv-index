@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>世界杯 · 封面专题</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f2f0eb;
+            font-family: 'Georgia', 'Times New Roman', '宋体', 'Songti SC', serif;
+            line-height: 1.7;
+            color: #1f2a3a;
+        }
+
+        /* 深色头图，杂志式全幅 */
+        .hero {
+            background: linear-gradient(145deg, #0b1a2a 0%, #142b3e 100%);
+            min-height: 420px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 2rem;
+            border-bottom: 4px solid #c89f5b;
+            position: relative;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: repeating-linear-gradient(90deg, #c89f5b 0px, #c89f5b 12px, transparent 12px, transparent 24px);
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            text-align: center;
+            color: #e7e4db;
+        }
+
+        .hero-content h1 {
+            font-size: 3.6rem;
+            font-weight: 300;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: #f5eada;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+            margin-bottom: 0.6rem;
+            word-break: keep-all;
+        }
+
+        .hero-content .sub {
+            font-size: 1.15rem;
+            letter-spacing: 2px;
+            color: #b7aa93;
+            border-top: 1px solid rgba(200, 159, 91, 0.4);
+            display: inline-block;
+            padding-top: 0.8rem;
+            margin-top: 0.4rem;
+        }
+
+        .hero-content .sub i {
+            font-style: normal;
+            background: rgba(200, 159, 91, 0.2);
+            padding: 0.1rem 0.8rem;
+            border-radius: 2px;
+        }
+
+        /* 正文区域 浅色底 */
+        .container {
+            max-width: 880px;
+            margin: 2.8rem auto;
+            padding: 0 1.8rem;
+        }
+
+        .intro-card {
+            background: #ffffff;
+            padding: 2.4rem 2.8rem;
+            margin-bottom: 2.8rem;
+            border-radius: 0 24px 0 24px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+            border-left: 4px solid #c89f5b;
+        }
+
+        .intro-card p {
+            margin-bottom: 1.2rem;
+        }
+
+        .intro-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #a08c72;
+            margin-bottom: 0.75rem;
+            border-bottom: 1px dashed #ddd;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        h2 {
+            font-size: 1.9rem;
+            font-weight: 400;
+            margin: 1.8rem 0 1rem 0;
+            color: #1f2a3a;
+            letter-spacing: 1px;
+        }
+
+        h2 small {
+            font-size: 0.9rem;
+            font-weight: 300;
+            color: #7c8a9a;
+            margin-left: 0.8rem;
+        }
+
+        .feature-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+            margin: 2rem 0 1.2rem;
+        }
+
+        .feature-item {
+            flex: 1 1 200px;
+            background: #fafaf7;
+            padding: 1.5rem 1.2rem;
+            border-radius: 12px;
+            border: 1px solid #eae6de;
+            transition: box-shadow 0.2s;
+        }
+
+        .feature-item:hover {
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+        }
+
+        .feature-item h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #2b3f54;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-item p {
+            font-size: 0.95rem;
+            color: #4c5a6b;
+        }
+
+        .highlight-link {
+            background: #f6f3ed;
+            padding: 1.5rem 2rem;
+            border-radius: 40px 8px 40px 8px;
+            margin: 2.2rem 0 2.5rem;
+            text-align: center;
+            border: 1px solid #e0d6c8;
+        }
+
+        .highlight-link p {
+            font-size: 1.1rem;
+        }
+
+        a {
+            color: #a1683c;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(161, 104, 60, 0.25);
+            transition: border-color 0.15s, color 0.15s;
+            font-weight: 500;
+        }
+
+        a:hover {
+            color: #743f1e;
+            border-bottom-color: #743f1e;
+        }
+
+        .faq-mini {
+            background: #f1ede7;
+            padding: 1.8rem 2rem;
+            border-radius: 4px 28px 4px 28px;
+            margin: 2.5rem 0;
+        }
+
+        .faq-mini dt {
+            font-weight: 600;
+            color: #1f2a3a;
+            margin-top: 1rem;
+            border-left: 3px solid #c89f5b;
+            padding-left: 0.8rem;
+        }
+
+        .faq-mini dt:first-of-type {
+            margin-top: 0;
+        }
+
+        .faq-mini dd {
+            margin: 0.3rem 0 1rem 1.2rem;
+            color: #3e4d5e;
+            font-size: 0.95rem;
+        }
+
+        .footer-note {
+            margin-top: 3.5rem;
+            padding: 1.2rem 0 0.2rem;
+            border-top: 2px solid #dad3c9;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #6a7b8a;
+        }
+
+        .footer-note span {
+            display: inline-block;
+            margin: 0 0.6rem;
+        }
+
+        @media (max-width: 640px) {
+            .hero-content h1 {
+                font-size: 2.4rem;
+                letter-spacing: 3px;
+            }
+            .intro-card {
+                padding: 1.8rem;
+            }
+            .feature-grid {
+                flex-direction: column;
+            }
+            .highlight-link {
+                padding: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                min-height: 300px;
+                padding: 2rem 1rem;
+            }
+            .hero-content .sub {
+                font-size: 0.95rem;
+            }
+            .container {
+                padding: 0 1rem;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 首页横幅 -->
+    <div class="hero">
+        <div class="hero-content">
+            <h1>世界杯</h1>
+            <div class="sub"><i>WORLD CUP · 全景入口</i></div>
+            <div style="margin-top: 1.2rem; font-size: 1rem; color: #b9aa94; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.6;">
+                四年一度的绿茵盛宴，也是无数记忆的锚点。
+            </div>
+        </div>
+    </div>
+
+    <!-- 正文：背景说明 + 三段自然介绍 + 其他 -->
+    <div class="container">
+
+        <!-- 第一段：背景说明 -->
+        <div class="intro-card">
+            <div class="section-label">✦ 封面故事</div>
+            <p>提到足球，多数人脑海里最先浮现的往往是那件球衣、某位球星的庆祝动作，或是深夜与朋友围坐的直播画面。而<span style="font-weight:500;">世界杯</span>恰恰是这些画面汇流之处——它既是一面镜子，映出不同地域的技战术风格，也是一道门，让偶尔关注体育的人也能找到共鸣。</p>
+            <p>这个页面试图成为一道稳定的入口：不堆叠排行榜，不追踪转会传闻，只用平实的叙述，帮你厘清<span style="font-weight:500;">世界杯</span>的观看脉络与背景。如果你只想找一个干净、直接的索引页，这里恰好合适。</p>
+        </div>
+
+        <!-- 第二段：从稳定入口切入 + 杂志式特点 -->
+        <div style="margin-bottom: 1.8rem;">
+            <h2>入口的质地 <small>· 一种安静的在场</small></h2>
+            <p>很多网站热衷于用弹窗、倒计时和闪烁的横幅来宣告“赛事即将开始”。但在这个专题页里，我们更想保留一种杂志式的距离感——信息是克制的，版式留有余地。下方几个特征概括了这里的调性：</p>
+
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>历史语境</h3>
+                    <p>每届赛事背后的文化背景、主办城市特质，而非仅罗列比分。</p>
+                </div>
+                <div class="feature-item">
+                    <h3>叙述而非播报</h3>
+                    <p>用两三段话讲清楚一个赛区的格局变化，而不是刷新的新闻流。</p>
+                </div>
+                <div class="feature-item">
+                    <h3>低干扰阅读</h3>
+                    <p>没有自动播放的视频、无休止的弹窗推荐，只有文字与留白。</p>
+                </div>
+            </div>
+
+            <p>当然，这并非否定即时信息的价值。只是当你需要从热闹的资讯场中暂时抽身，重新理解<span style="font-weight:500;">世界杯</span>的叙事时，这个页面愿意充当一本可以随时翻阅的小册子。</p>
+        </div>
+
+        <!-- 第三段：场景 + 提示（自然嵌入链接） -->
+        <div class="intro-card" style="border-left-color: #a1683c;">
+            <div class="section-label">✦ 一个使用场景</div>
+            <p>设想这样一个傍晚：你打开电脑，想查一下即将到来的小组赛对阵，却又不想陷入社交媒体的信息洪流。这时，你点开一个稳定、排版干净的页面——就像 <a href="https://cctv-index-sjb.com">世界杯</a> 这个链接所指向的地方。它不会用刺眼的字体催促你“立即观看”，而是安静地陈列着赛程逻辑、球队近况与历史对照。你滑动屏幕，找到自己关心的那组对决，然后关掉页面，回到自己的节奏里。</p>
+            <p>我们相信，好的索引页应当像一本杂志的目录：清晰、可信，且不抢夺视线。这份克制本身就是对读者时间的尊重。</p>
+        </div>
+
+        <!-- FAQ 摘要 / 简洁问答 -->
+        <div class="faq-mini">
+            <h2 style="margin-top:0; font-size:1.5rem;">一些常见疑问</h2>
+            <dl>
+                <dt>这个页面会实时更新比分吗？</dt>
+                <dd>不。这里侧重背景介绍与索引功能，实时比分请通过官方数据源查询。我们更愿意做好“赛前阅读”这一环。</dd>
+                <dt>链接中的「世界杯」能带我去哪里？</dt>
+                <dd>它会直接带你到 <a href="https://cctv-index-sjb.com">世界杯</a> 主题的专题页面，内容结构与本页类似，但更聚焦于赛事本身的资料梳理。</dd>
+                <dt>为什么视觉风格像杂志？</dt>
+                <dd>因为我们希望你在获取信息时，感受到翻阅纸质刊物的从容——深色头图奠定基调，浅色正文区负责承载文字，强调色只用于关键链接。</dd>
+            </dl>
+        </div>
+
+        <!-- 再次强调链接，自然嵌入句子 -->
+        <div class="highlight-link">
+            <p>如果你已经在寻找一个不喧哗的索引起点，不妨从这里开始 ——<br>
+            <a href="https://cctv-index-sjb.com" style="font-size:1.2rem; border-bottom-width:2px;">世界杯</a><br>
+            <span style="color:#6f7b8a; font-size:0.9rem;">一个安静、直接的专题入口</span></p>
+        </div>
+
+        <!-- 页尾访问提示 -->
+        <div class="footer-note">
+            <span>杂志式专题 · 2025</span>
+            <span>|</span>
+            <span>封面图像仅为示意</span>
+            <span>|</span>
+            <span>内容独立 不涉及实时数据</span>
+        </div>
+
+    </div>
+</body>
+</html>
